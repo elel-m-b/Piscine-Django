@@ -9,8 +9,6 @@
 
 # 🐍 Django Piscine – 42 Network
 
-<img src="https://github.com/user-attachments/assets/your-django-banner.png" alt="Django Piscine Banner" width="100%"/>
-
 [![42 School](https://img.shields.io/badge/1337-42_Network-000000?style=for-the-badge&logo=42&logoColor=white)](https://www.1337.ma/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
@@ -302,12 +300,15 @@ cd django-piscine
 
 ```bash
 # Create virtual environment
+
 python3 -m venv venv
 
 # Activate virtual environment
 # On Linux/Mac:
+
 source venv/bin/activate
 # On Windows:
+
 venv\Scripts\activate
 ```
 
@@ -349,28 +350,6 @@ To successfully validate the Django Piscine:
 - [ ] Dedicate **minimum 2 weeks** of focused work
 - [ ] **Collaborate** with other students
 - [ ] Validate **each project before moving to next**
-
-### 🚫 Common Mistakes to Avoid
-
-- ❌ Skipping modules or trying to do them out of order
-- ❌ Working completely alone
-- ❌ Not submitting incomplete work
-- ❌ Ignoring peer evaluations
-- ❌ Rushing through without understanding concepts
-- ❌ Not testing code before submission
-
-### ⏱️ Timeline Constraints
-
-| Constraint | Duration |
-|------------|----------|
-| **Repository Auto-Close** | 1 day after initialization |
-| **Peer Evaluation Window** | 2 days to complete |
-| **Module Retry** | Immediate (no waiting) |
-| **Minimum Commitment** | 2+ weeks recommended |
-
----
-
-## 💡 Tips for Success
 
 ### 🎯 Study Strategy
 
@@ -422,7 +401,7 @@ python manage.py test               # Run tests
 
 | Module | Status | Grade | Completion Date |
 |--------|--------|-------|-----------------|
-| Django-0-Initiation | ⬜ Not Started | - | - |
+| Django-0-Initiation | 🟡 In Progress | - | - |
 | Django-0-Starting | ⬜ Not Started | - | - |
 | Django-0-Oob | ⬜ Not Started | - | - |
 | Django-1-Lib | ⬜ Not Started | - | - |
@@ -581,28 +560,6 @@ python manage.py migrate
 
 </div>
 
----
-
-## 📝 License & Honor Code
-
-This repository is part of the **42 Network** curriculum. The code is available for:
-- ✅ Learning and understanding concepts
-- ✅ Reference and inspiration
-- ❌ **NOT for copying** in your own 42 projects
-
-**Please respect the 42 Honor Code** - plagiarism will result in -42 and potential expulsion.
-
----
-
-## 🤝 Contributing
-
-If you're also doing the Django Piscine:
-- Share knowledge, not solutions
-- Collaborate on understanding, not copying
-- Help debug, but let others solve their own problems
-- Peer evaluations are for learning, not just validation
-
----
 
 ## 🙏 Acknowledgments
 
@@ -611,17 +568,3 @@ Special thanks to:
 - 🐍 **Django Software Foundation** for the amazing framework
 - 💡 **Fellow Pisciners** for collaboration and support
 - 📚 **Open Source Community** for incredible resources
-
----
-
-<div align="center">
-
-### 🌟 Star this repo if it helps you!
-
-**Made with 🐍 Python and 💚 Django**
-
-*"The journey of a thousand lines of code begins with a single import."*
-
-**Good luck on your Django Piscine! 🏊‍♂️**
-
-</div>
