@@ -1,5 +1,6 @@
+<div align="center">
 # 🚀 Day 0 - 42 Piscine Django
-
+</div>
 <div align="center">
 
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
