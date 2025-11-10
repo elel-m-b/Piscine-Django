@@ -13,7 +13,7 @@
 
 ## 📚 Skills
 
-<table>
+<table align="center">
 <tr>
 <td align="center" width="33%">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="60" height="60" alt="OOP"/>
@@ -51,8 +51,6 @@
 <div align="center">
 
 ### 💡 *Let's build something amazing!*
-
-**Good luck with your Piscine! 🏊‍♂️**
 
 </div>
 
