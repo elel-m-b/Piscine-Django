@@ -11,3 +11,10 @@
 
 <h2 align="center" >  🌐 Master web development with Django framework Python • Django • SQL • Web Development • Sessions Management </h1>
 
+<div align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/df6eef51-ffd9-4d61-8799-3187fcb83d35"
+    alt="Screenshot from 2025-11-23"
+    style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px;"
+  />
+</div>
