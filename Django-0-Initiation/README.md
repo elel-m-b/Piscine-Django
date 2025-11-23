@@ -33,6 +33,13 @@
 </table>
 
 ---
+<div align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/17688d13-62ba-4dfc-b5eb-5ddcd7f8d40a"
+    alt="Django - 0 -Initialization"
+    style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px;"
+  />
+</div>
 
 ## 🎯 Summary
 
