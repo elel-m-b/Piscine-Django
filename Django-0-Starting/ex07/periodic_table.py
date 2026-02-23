@@ -24,16 +24,13 @@ def parse_file(filename):
 
 def generate_html(elements):
     table = []
-    current_row = []
-
+    current_row = [''] * 18
     last_position = -1
 
     for el in elements:
         position = int(el['position'])
-
-        if position == 0:
-            if current_row:
-                table.append(current_row)
+        if position <= last_position:
+            table.append(current_row)
             current_row = [''] * 18
 
         cell = (
@@ -58,18 +55,19 @@ def generate_html(elements):
     if current_row:
         table.append(current_row)
 
-    html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Periodic Table</title></head><body>'
-    html += '<table style="border-collapse:collapse;">'
+    html = '<!DOCTYPE html>\n'
+    html += '<html><head><meta charset="utf-8"><title>Periodic Table</title></head><body>\n'
+    html += '<table style="border-collapse:collapse;">\n'
 
     for row in table:
         html += '<tr>'
         for cell in row:
-            html += cell if cell else '<td></td>'
-        html += '</tr>'
+            html += cell or '<td></td>'
+        html += '</tr>\n'
 
     html += '</table></body></html>'
-
     return html
+
 
 
 def periodic_table():
