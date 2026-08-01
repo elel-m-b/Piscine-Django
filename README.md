@@ -1,12 +1,7 @@
-<div align="center">
-  <img 
-    src="https://github.com/user-attachments/assets/b4ec672e-f924-4d0c-a006-6b676db76259"
-    alt="Django Python"
-    style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px;"
-  />
-</div>
-<h1 align="center">Django Piscine – 42 Network</h1>
-<h2 align="center">🌐 Master web development with Django framework<br>Python • Django • SQL • Web Development • Sessions Management</h2>
+# Django Piscine - 42
+
+> This repository contains my work for the **42 Django Piscine**.
+> The goal of the Piscine is to learn the fundamentals of Django by completing a series of projects, where each one introduces new concepts and builds on the previous exercises.
 
 <div align="center">
   <img 
@@ -16,25 +11,55 @@
   />
 </div>
 
-## 📚 Resources
+## Piscine Structure
 
-- [Django Official Documentation](https://docs.djangoproject.com/)
-- [Django Girls Tutorial](https://tutorial.djangogirls.org/)
-- [Mozilla Django Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
-- 42 Intranet Resources
+The Piscine is divided into several projects that must be completed **in the following order**:
 
----
+### Day 0
 
-## 🔗 Connect
+* Django - 0 - Initiation
+* Django - 0 - Starting
+* Django - 0 - Oob
 
-- **42 Login:** elel-m-b
-- **GitHub:** https://github.com/elel-m-b
----
+Introduction to Django, project setup, basic commands, and understanding how a Django application is organized.
 
-<div align="center">
+### Day 1
 
-### 🌊 "The Piscine is not a sprint, it's a marathon. Pace yourself and enjoy the journey!"
+* Django - 1 - Lib
+* Django - 1 - Base Django
 
-**Last Updated:** [Date]
+Working with Django applications, templates, static files, reusable components, and the basics of building web applications.
 
-</div>
+### Day 2
+
+* Django - 2 - SQL
+
+Learning how Django interacts with databases through models, queries, migrations, and SQL concepts.
+
+### Day 3
+
+* Django - 3 - Sessions
+* Django - 3 - Advanced
+* Django - 3 - Final
+
+Using sessions and authentication, exploring more advanced Django features, and completing the final project that brings together everything learned throughout the Piscine.
+
+## Validation
+
+Projects **must be validated in order**. You cannot register for the next project until the previous one has been successfully validated.
+
+The required validation order is:
+
+1. Django - 0 - Initiation
+2. Django - 0 - Starting
+3. Django - 0 - Oob
+4. Django - 1 - Lib
+5. Django - 1 - Base Django
+6. Django - 2 - SQL
+7. Django - 3 - Sessions
+8. Django - 3 - Advanced
+9. Django - 3 - Final
+
+## Repository
+
+Each project is organized in its own directory and contains the corresponding solution for that exercise. This repository serves as a record of my progress throughout the Django Piscine.
