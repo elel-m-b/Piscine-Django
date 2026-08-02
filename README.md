@@ -2,40 +2,49 @@
 
 > This repository contains my work for the **42 Django Piscine**.
 > The goal of the Piscine is to learn the fundamentals of Django by completing a series of projects, where each one introduces new concepts and builds on the previous exercises.
+## 🗺️ Piscine Structure
 
-## Piscine Structure
+```mermaid
+flowchart LR
 
-The Piscine is divided into several projects that must be completed **in the following order**:
+    START([🚀 Start])
 
-### Day 0
+    subgraph D0["📅 Day 0 - Django Basics"]
+        D00["Initiation"]
+        D01["Starting"]
+        D02["Oob"]
+    end
 
-* Django - 0 - Initiation
-* Django - 0 - Starting
-* Django - 0 - Oob
+    subgraph D1["📅 Day 1 - Building Apps"]
+        D10["Lib"]
+        D11["Base Django"]
+    end
 
-Introduction to Django, project setup, basic commands, and understanding how a Django application is organized.
+    subgraph D2["📅 Day 2 - Database"]
+        D20["SQL"]
+    end
 
-### Day 1
+    subgraph D3["📅 Day 3 - Advanced"]
+        D30["Sessions"]
+        D31["Advanced"]
+        D32["Final Project"]
+    end
 
-* Django - 1 - Lib
-* Django - 1 - Base Django
+    START --> D00
+    D00 --> D01
+    D01 --> D02
 
-Working with Django applications, templates, static files, reusable components, and the basics of building web applications.
+    D02 --> D10
+    D10 --> D11
 
-### Day 2
+    D11 --> D20
 
-* Django - 2 - SQL
+    D20 --> D30
+    D30 --> D31
+    D31 --> D32
 
-Learning how Django interacts with databases through models, queries, migrations, and SQL concepts.
-
-### Day 3
-
-* Django - 3 - Sessions
-* Django - 3 - Advanced
-* Django - 3 - Final
-
-Using sessions and authentication, exploring more advanced Django features, and completing the final project that brings together everything learned throughout the Piscine.
-
+    D32 --> END([🎓 Piscine Complete])
+```
 ## Validation
 
 Projects **must be validated in order**. You cannot register for the next project until the previous one has been successfully validated.
