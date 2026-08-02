@@ -2,48 +2,54 @@
 
 > This repository contains my work for the **42 Django Piscine**.
 > The goal of the Piscine is to learn the fundamentals of Django by completing a series of projects, where each one introduces new concepts and builds on the previous exercises.
-## 🗺️ Piscine Structure
+
+##  Django Piscine Roadmap
 
 ```mermaid
-flowchart LR
+flowchart TB
 
     START([🚀 Start])
 
-    subgraph D0["📅 Day 0 - Django Basics"]
-        D00["Initiation"]
-        D01["Starting"]
-        D02["Oob"]
+    START --> DAY0
+
+    subgraph DAY0["📅 Day 0 - Introduction"]
+        direction TB
+        D00["Django - 0 - Initiation"]
+        D01["Django - 0 - Starting"]
+        D02["Django - 0 - Oob"]
+
+        D00 --> D01 --> D02
     end
 
-    subgraph D1["📅 Day 1 - Building Apps"]
-        D10["Lib"]
-        D11["Base Django"]
+    DAY0 --> DAY1
+
+    subgraph DAY1["📅 Day 1 - Web Applications"]
+        direction TB
+        D10["Django - 1 - Lib"]
+        D11["Django - 1 - Base Django"]
+
+        D10 --> D11
     end
 
-    subgraph D2["📅 Day 2 - Database"]
-        D20["SQL"]
+    DAY1 --> DAY2
+
+    subgraph DAY2["📅 Day 2 - Database"]
+        direction TB
+        D20["Django - 2 - SQL"]
     end
 
-    subgraph D3["📅 Day 3 - Advanced"]
-        D30["Sessions"]
-        D31["Advanced"]
-        D32["Final Project"]
+    DAY2 --> DAY3
+
+    subgraph DAY3["📅 Day 3 - Advanced Concepts"]
+        direction TB
+        D30["Django - 3 - Sessions"]
+        D31["Django - 3 - Advanced"]
+        D32["Django - 3 - Final Project"]
+
+        D30 --> D31 --> D32
     end
 
-    START --> D00
-    D00 --> D01
-    D01 --> D02
-
-    D02 --> D10
-    D10 --> D11
-
-    D11 --> D20
-
-    D20 --> D30
-    D30 --> D31
-    D31 --> D32
-
-    D32 --> END([🎓 Piscine Complete])
+    DAY3 --> END([🎓 Piscine Complete])
 ```
 ## Validation
 
