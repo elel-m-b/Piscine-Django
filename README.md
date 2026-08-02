@@ -8,11 +8,11 @@
 ```mermaid
 flowchart TB
 
-    START([🚀 Start])
+    START([Start])
 
     START --> DAY0
 
-    subgraph DAY0["📅 Day 0 - Introduction"]
+    subgraph DAY0["Day 0 - Introduction"]
         direction TB
         D00["Django - 0 - Initiation"]
         D01["Django - 0 - Starting"]
@@ -23,7 +23,7 @@ flowchart TB
 
     DAY0 --> DAY1
 
-    subgraph DAY1["📅 Day 1 - Web Applications"]
+    subgraph DAY1["Day 1 - Web Applications"]
         direction TB
         D10["Django - 1 - Lib"]
         D11["Django - 1 - Base Django"]
@@ -33,14 +33,14 @@ flowchart TB
 
     DAY1 --> DAY2
 
-    subgraph DAY2["📅 Day 2 - Database"]
+    subgraph DAY2["Day 2 - Database"]
         direction TB
         D20["Django - 2 - SQL"]
     end
 
     DAY2 --> DAY3
 
-    subgraph DAY3["📅 Day 3 - Advanced Concepts"]
+    subgraph DAY3["Day 3 - Advanced Concepts"]
         direction TB
         D30["Django - 3 - Sessions"]
         D31["Django - 3 - Advanced"]
@@ -49,7 +49,7 @@ flowchart TB
         D30 --> D31 --> D32
     end
 
-    DAY3 --> END([🎓 Piscine Complete])
+    DAY3 --> END([Piscine Complete])
 ```
 ## Validation
 
