@@ -1,0 +1,46 @@
+{% extends "ex01/base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+
+<p><strong>Django</strong> is a free, open-source, high-level Python web
+framework that encourages rapid development and clean, pragmatic design.
+It takes care of much of the hassle of web development, so developers can
+focus on writing their app instead of reinventing the wheel.</p>
+
+<h2>A Short History</h2>
+<p>Django was created in 2003 by web developers <strong>Adrian Holovaty</strong>
+and <strong>Simon Willison</strong> while working at the Lawrence
+Journal-World newspaper. They needed to build database-driven news sites
+very quickly, so they extracted their internal tools into a reusable
+framework. It was released publicly in <strong>2005</strong> and named after
+the jazz guitarist <strong>Django Reinhardt</strong>.</p>
+
+<h2>Why Django?</h2>
+<ul>
+    <li><strong>Batteries included</strong>: an ORM, an admin panel, a
+    templating engine, an authentication system and more come built in.</li>
+    <li><strong>DRY (Don't Repeat Yourself)</strong>: Django encourages
+    reusable code through template inheritance, model definitions and
+    reusable apps.</li>
+    <li><strong>Security</strong>: Django helps developers avoid common
+    security mistakes such as SQL injection, cross-site scripting and
+    cross-site request forgery.</li>
+    <li><strong>Scalability</strong>: Django powers very large sites such as
+    Instagram and Pinterest.</li>
+</ul>
+
+<h2>The MVT Pattern</h2>
+<p>Django follows the <strong>Model-View-Template</strong> pattern, a
+variation of the classic MVC pattern:</p>
+<ul>
+    <li><strong>Model</strong>: describes the data structure (usually mapped
+    to database tables).</li>
+    <li><strong>View</strong>: contains the logic that processes a request
+    and decides what data to show.</li>
+    <li><strong>Template</strong>: describes how the data should be
+    displayed (the HTML).</li>
+</ul>
+{% endblock %}

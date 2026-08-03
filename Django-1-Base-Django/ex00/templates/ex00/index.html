@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+            color: #222;
+        }
+        h1 { border-bottom: 3px solid #333; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+        th { background-color: #f0f0f0; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Courier New", monospace;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #ccc;
+            margin: 10px 0;
+            padding-left: 15px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ page_title }}</h1>
+    <p>Markdown is a lightweight markup language that lets you format plain text
+    using simple, readable symbols. It is widely used for README files, forum
+    posts, documentation and note-taking because it is easy to write and easy
+    to read even before it is converted to HTML.</p>
+
+    <h2>Headings</h2>
+    <table>
+        <tr><th>Markdown</th><th>Result</th></tr>
+        <tr><td><code># Heading 1</code></td><td>Largest heading</td></tr>
+        <tr><td><code>## Heading 2</code></td><td>Second level heading</td></tr>
+        <tr><td><code>###### Heading 6</code></td><td>Smallest heading</td></tr>
+    </table>
+
+    <h2>Text Emphasis</h2>
+    <table>
+        <tr><th>Markdown</th><th>Result</th></tr>
+        <tr><td><code>*italic*</code> or <code>_italic_</code></td><td><em>italic</em></td></tr>
+        <tr><td><code>**bold**</code> or <code>__bold__</code></td><td><strong>bold</strong></td></tr>
+        <tr><td><code>***bold italic***</code></td><td><strong><em>bold italic</em></strong></td></tr>
+        <tr><td><code>~~strikethrough~~</code></td><td><del>strikethrough</del></td></tr>
+    </table>
+
+    <h2>Lists</h2>
+    <p>Unordered lists use <code>-</code>, <code>*</code> or <code>+</code>:</p>
+    <pre>- Item one
+- Item two
+  - Nested item</pre>
+    <p>Ordered lists use numbers followed by a dot:</p>
+    <pre>1. First item
+2. Second item</pre>
+
+    <h2>Links and Images</h2>
+    <table>
+        <tr><th>Markdown</th><th>Purpose</th></tr>
+        <tr><td><code>[link text](https://example.com)</code></td><td>Hyperlink</td></tr>
+        <tr><td><code>![alt text](image.png)</code></td><td>Image</td></tr>
+    </table>
+
+    <h2>Code</h2>
+    <p>Inline code uses single backticks: <code>`like this`</code>.</p>
+    <p>Code blocks use triple backticks, optionally with a language name:</p>
+    <pre>```python
+print("Hello, world!")
+```</pre>
+
+    <h2>Blockquotes</h2>
+    <pre>&gt; This is a quote</pre>
+    <blockquote>This is a quote</blockquote>
+
+    <h2>Horizontal Rule</h2>
+    <p>Three or more dashes, asterisks or underscores on their own line:</p>
+    <pre>---</pre>
+
+    <h2>Tables</h2>
+    <pre>| Column A | Column B |
+|----------|----------|
+| Value 1  | Value 2  |</pre>
+
+    <h2>Special Characters</h2>
+    <p>To display a character that would otherwise be interpreted by Markdown
+    (such as <code>*</code>, <code>_</code>, <code>#</code> or <code>`</code>),
+    escape it with a backslash, e.g. <code>\*not italic\*</code>.</p>
+</body>
+</html>

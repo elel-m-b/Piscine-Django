@@ -1,0 +1,50 @@
+{% extends "ex01/base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+
+<p>Displaying a simple static page in Django follows a well-defined path,
+from the moment the browser sends a request to the moment it receives the
+finished HTML response.</p>
+
+<ol>
+    <li>
+        <strong>The request arrives.</strong> The browser sends an HTTP
+        request (for example a GET request to <code>/ex00</code>) to the
+        Django development server started with <code>manage.py runserver</code>.
+    </li>
+    <li>
+        <strong>The URL dispatcher takes over.</strong> Django's URL resolver
+        reads the project's root <code>urls.py</code> and looks for a
+        pattern that matches the requested path. When it finds a match, it
+        calls the associated <strong>view</strong> function, usually
+        forwarding it to the application's own <code>urls.py</code> via
+        <code>include()</code>.
+    </li>
+    <li>
+        <strong>The view is executed.</strong> The view function (in
+        <code>views.py</code>) receives the <code>HttpRequest</code> object,
+        runs whatever logic is needed (here, none, since the page is
+        static), builds a <strong>context</strong> dictionary of variables to
+        pass to the template, and calls <code>render()</code>.
+    </li>
+    <li>
+        <strong>The template engine renders the HTML.</strong>
+        <code>render()</code> loads the requested template file, replaces
+        every template tag and variable with real data from the context, and
+        produces a complete HTML string.
+    </li>
+    <li>
+        <strong>The response is sent back.</strong> The rendered HTML is
+        wrapped in an <code>HttpResponse</code> object and sent back to the
+        browser, which then displays the page to the user.
+    </li>
+</ol>
+
+<h2>Summary</h2>
+<p><code>Request</code> &rarr; <code>URL dispatcher</code> &rarr;
+<code>View</code> &rarr; <code>Template engine</code> &rarr;
+<code>Response</code> &rarr; <code>Browser display</code>.</p>
+{% endblock %}

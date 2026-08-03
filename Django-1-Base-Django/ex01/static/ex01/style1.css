@@ -1,0 +1,9 @@
+/* style1.css : used on every ex01 page EXCEPT the Template Engine page */
+body {
+    color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}

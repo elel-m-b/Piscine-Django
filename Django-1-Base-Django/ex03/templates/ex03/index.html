@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 40px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td.cell {
+            border: 1px solid #999;
+        }
+        th {
+            padding: 8px;
+            background-color: #eee;
+        }
+        td.cell {
+            height: 40px;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ page_title }}</h1>
+
+    <table>
+        <tr>
+            <th>{{ columns.0 }}</th>
+            <th>{{ columns.1 }}</th>
+            <th>{{ columns.2 }}</th>
+            <th>{{ columns.3 }}</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td class="cell" style="background-color: {{ row.black }};"></td>
+            <td class="cell" style="background-color: {{ row.red }};"></td>
+            <td class="cell" style="background-color: {{ row.blue }};"></td>
+            <td class="cell" style="background-color: {{ row.green }};"></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

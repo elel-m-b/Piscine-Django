@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+        form { margin-bottom: 30px; }
+        input[type="text"] {
+            padding: 8px;
+            width: 60%;
+            font-size: 1em;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        table { border-collapse: collapse; width: 100%; }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th { background-color: #f0f0f0; }
+        .errorlist { color: red; list-style: none; padding: 0; }
+    </style>
+</head>
+<body>
+    <h1>{{ page_title }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Input History</h2>
+    {% if history %}
+        <table>
+            <tr><th>#</th><th>Date &amp; Time</th><th>Submitted Text</th></tr>
+            {% for entry in history %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ entry.timestamp }}</td>
+                <td>{{ entry.text }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p><em>No submissions yet.</em></p>
+    {% endif %}
+</body>
+</html>

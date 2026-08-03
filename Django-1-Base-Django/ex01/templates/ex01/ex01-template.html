@@ -1,0 +1,65 @@
+{% extends "ex01/base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'ex01/style2.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+
+<p>Django ships with its own default template engine, the
+<strong>Django Template Language (DTL)</strong>. It lets you insert dynamic
+data and simple logic into otherwise static HTML files, using two kinds of
+syntax:</p>
+<ul>
+    <li>{% verbatim %}<code>{{ variable }}</code>{% endverbatim %} to output a value.</li>
+    <li>{% verbatim %}<code>{% tag %}</code>{% endverbatim %} to perform logic such as loops and
+    conditions.</li>
+</ul>
+
+<h2>Blocks</h2>
+<p>A <strong>block</strong> is a named placeholder defined in a parent
+template with {% verbatim %}<code>{% block name %}...{% endblock %}</code>{% endverbatim %}. A
+child template that uses {% verbatim %}<code>{% extends %}</code>{% endverbatim %} can override
+that block to replace its content while reusing everything else from the
+parent. This page itself is a good example: it extends <code>base.html</code>
+and overrides the <code>style</code> block to load <code>style2.css</code>
+instead of the default <code>style1.css</code>.</p>
+
+<h2>The <code>for ... in</code> Loop</h2>
+<p>The <code>for</code> tag repeats a block of HTML once for every item in a
+list or queryset:</p>
+{% verbatim %}
+<pre>{% for item in item_list %}
+    &lt;li&gt;{{ item }}&lt;/li&gt;
+{% endfor %}</pre>
+{% endverbatim %}
+<p>Django also provides an {% verbatim %}<code>{% empty %}</code>{% endverbatim %} clause that is
+rendered when the list is empty, and loop helpers such as
+<code>forloop.counter</code> or <code>forloop.first</code>.</p>
+
+<h2>The <code>if</code> Control Structure</h2>
+<p>The <code>if</code> tag conditionally renders content, and supports
+<code>elif</code> and <code>else</code> just like Python:</p>
+{% verbatim %}
+<pre>{% if user.is_authenticated %}
+    Welcome back!
+{% elif guest_mode %}
+    Browsing as a guest.
+{% else %}
+    Please log in.
+{% endif %}</pre>
+{% endverbatim %}
+
+<h2>Displaying Context Variables</h2>
+<p>A view passes a Python dictionary, called the <strong>context</strong>,
+to <code>render()</code>. Every key of that dictionary becomes a variable
+the template can display with double curly braces, e.g.
+{% verbatim %}<code>{{ page_title }}</code>{% endverbatim %}. Dot notation
+({% verbatim %}<code>{{ object.attribute }}</code>{% endverbatim %}) is used to access attributes,
+dictionary keys, or even call methods with no arguments, which keeps the
+template logic-free and easy to read.</p>
+{% endblock %}
