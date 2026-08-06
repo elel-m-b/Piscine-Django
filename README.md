@@ -15,50 +15,44 @@ The projects must be completed in the following order:
   />
 </div>
 
-## Django Piscine Progress
+# Django Piscine Progress
 
-```mermaid
-flowchart TB
+##  Django - 0 - Initiation
 
-    A([Start])
+Learn the fundamentals of web development, including **HTTP, HTML, CSS**, and how to integrate existing **JavaScript** scripts into web pages.
 
-    A --> B
+##  Django - 0 - Starting
 
-    subgraph "Day 0"
-        B1[Initiation]
-        B2[Starting]
-        B3[OOB]
+Discover the basics of **Python**, focusing on its syntax and core programming concepts.
 
-        B1 --> B2 --> B3
-    end
+##  Django - 0 - Oob
 
-    B --> C
+Explore **Object-Oriented Programming (OOP)** in Python and build a solid understanding of classes, objects, inheritance, and related concepts.
 
-    subgraph "Day 1"
-        C1[Lib]
-        C2[Base Django]
+##  Django - 1 - Lib
 
-        C1 --> C2
-    end
+Learn how to work with useful **Python libraries** and understand how they can simplify and enhance your Python projects.
 
-    C --> D
+##  Django - 1 - Base Django
 
-    subgraph "Day 2"
-        D1[SQL]
-    end
+Start your journey with **Django**, learning how to create and structure your first Django project.
 
-    D --> E
+##  Django - 2 - SQL
 
-    subgraph "Day 3"
-        E1[Sessions]
-        E2[Advanced]
-        E3[Final Project]
+Learn how to use Django's **Object-Relational Mapper (ORM)** to interact with databases efficiently without writing raw SQL.
 
-        E1 --> E2 --> E3
-    end
+## Django - 3 - Sessions
 
-    E --> F([Complete])
-```
+Master **user authentication, authorization, permissions, and user management** in Django to build secure web applications.
+
+## Django - 3 - Advanced
+
+Explore **advanced Django features**, including more powerful tools and techniques for developing robust applications.
+
+##  Django - 3 - Final
+
+Learn how to use **AJAX** and **WebSockets** with Django to create dynamic, interactive, and real-time web applications.
+
 
 ## Repository Structure
 
