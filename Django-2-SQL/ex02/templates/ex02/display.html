@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>ex02 - Movies</title></head>
+<body>
+<table border="1">
+    <tr>
+        <th>Episode</th>
+        <th>Title</th>
+        <th>Opening crawl</th>
+        <th>Director</th>
+        <th>Producer</th>
+        <th>Release date</th>
+    </tr>
+    {% for episode_nb, title, opening_crawl, director, producer, release_date in movies %}
+    <tr>
+        <td>{{ episode_nb }}</td>
+        <td>{{ title }}</td>
+        <td>{{ opening_crawl|default_if_none:"" }}</td>
+        <td>{{ director }}</td>
+        <td>{{ producer }}</td>
+        <td>{{ release_date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

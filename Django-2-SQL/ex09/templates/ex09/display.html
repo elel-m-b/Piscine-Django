@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>ex09 - Windy homeworlds</title></head>
+<body>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Homeworld</th>
+        <th>Climate</th>
+    </tr>
+    {% for person in people %}
+    <tr>
+        <td>{{ person.name }}</td>
+        <td>{{ person.homeworld.name }}</td>
+        <td>{{ person.homeworld.climate }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

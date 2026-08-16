@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>ex06 - Update a movie</title></head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <select name="title">
+        {% for title in titles %}
+        <option value="{{ title }}">{{ title }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <textarea name="opening_crawl" rows="6" cols="60"></textarea>
+    <br>
+    <button type="submit" name="update">update</button>
+</form>
+</body>
+</html>
