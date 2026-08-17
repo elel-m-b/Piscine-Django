@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+    <h1>Life Pro Tips</h1>
+
+    {% if form %}
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button "Post tip" button_type="submit" button_class="btn btn-primary" %}
+        </form>
+    {% else %}
+        <p class="text-muted">
+            <a href="{% url 'tips:login' %}">Log in</a> to post your own tip!
+        </p>
+    {% endif %}
+
+    <hr>
+
+    {% for tip in tips %}
+        <div class="card mb-3" id="tip-{{ tip.id }}">
+            <div class="card-body">
+                <p class="card-text">{{ tip.content }}</p>
+                <p class="card-subtitle text-muted small mb-3">
+                    by {{ tip.author.username }} ({{ tip.author.reputation }}) &middot; {{ tip.date|date:"N j, Y, H:i" }}
+                </p>
+
+                <div class="d-flex align-items-center gap-2">
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'tips:upvote_tip' tip.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm {% if user in tip.upvoters.all %}btn-success{% else %}btn-outline-success{% endif %}">
+                                &#9650; {{ tip.upvote_count }}
+                            </button>
+                        </form>
+                        {% if tip.author == user or perms.tips.downvote_tip %}
+                            <form method="post" action="{% url 'tips:downvote_tip' tip.id %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm {% if user in tip.downvoters.all %}btn-danger{% else %}btn-outline-danger{% endif %}">
+                                    &#9660; {{ tip.downvote_count }}
+                                </button>
+                            </form>
+                        {% else %}
+                            <span class="btn btn-sm btn-outline-danger disabled">&#9660; {{ tip.downvote_count }}</span>
+                        {% endif %}
+                        {% if tip.author == user or perms.tips.delete_tip %}
+                            <form method="post" action="{% url 'tips:delete_tip' tip.id %}" class="d-inline ms-auto">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+                            </form>
+                        {% endif %}
+                    {% else %}
+                        <span class="btn btn-sm btn-outline-success disabled">&#9650; {{ tip.upvote_count }}</span>
+                        <span class="btn btn-sm btn-outline-danger disabled">&#9660; {{ tip.downvote_count }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No tips yet. Be the first to share one!</p>
+    {% endfor %}
+{% endblock %}

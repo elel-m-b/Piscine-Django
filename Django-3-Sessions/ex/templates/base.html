@@ -1,0 +1,32 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Life Pro Tips{% endblock %}</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark px-3 mb-4">
+        <a class="navbar-brand" href="{% url 'tips:home' %}">Life Pro Tips</a>
+        <div class="ms-auto d-flex align-items-center">
+            {% block nav_extra %}
+            {% if user.is_authenticated %}
+                <span class="text-light me-3">Hello {{ user.username }} ({{ user.reputation }})!</span>
+                <a class="btn btn-outline-light btn-sm" href="{% url 'tips:logout' %}">Log out</a>
+            {% else %}
+                <span class="text-light me-3">Hello {{ anon_name }}!</span>
+                <a class="btn btn-outline-light btn-sm me-2" href="{% url 'tips:login' %}">Log in</a>
+                <a class="btn btn-light btn-sm" href="{% url 'tips:register' %}">Register</a>
+            {% endif %}
+            {% endblock %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% bootstrap_messages %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
