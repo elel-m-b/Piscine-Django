@@ -1,4 +1,4 @@
-# Training Python-Django 3 Advanced — Hellenica
+# Django-3-Advanced :Hellenica
 
 A simple Django project that combines the 7 exercises from the **Training Python-Django 3 Advanced** subject.
 
