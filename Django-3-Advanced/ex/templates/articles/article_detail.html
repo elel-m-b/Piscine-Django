@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Hellenica{% endblock %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p class="text-muted">
+        by {{ article.author.username }} &middot; {{ article.created|date:"N j, Y, H:i" }}
+    </p>
+    <p class="fst-italic">{{ article.synopsis }}</p>
+    <hr>
+    <p style="white-space: pre-line;">{{ article.content }}</p>
+
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'articles:add_favourite' article.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary btn-sm">Add to favourites</button>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,73 @@
+[
+{
+  "model": "articles.article",
+  "pk": 1,
+  "fields": {
+    "title": "The Wrath of Achilles",
+    "author": 1,
+    "created": "2026-08-18T21:55:09.338Z",
+    "synopsis": "How a hero's anger shaped the fate of Troy.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 2,
+  "fields": {
+    "title": "The Wooden Horse",
+    "author": 1,
+    "created": "2026-08-18T21:55:09.340Z",
+    "synopsis": "The trick that finally ended a ten-year siege.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 3,
+  "fields": {
+    "title": "Songs for the Lyre",
+    "author": 2,
+    "created": "2026-08-18T21:55:09.342Z",
+    "synopsis": "Fragments of verse composed on the isle of Lesbos.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 4,
+  "fields": {
+    "title": "An Ode to the Evening Star",
+    "author": 2,
+    "created": "2026-08-18T21:55:09.344Z",
+    "synopsis": "A short poem greeting the coming of night.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 5,
+  "fields": {
+    "title": "The Histories, Book One",
+    "author": 3,
+    "created": "2026-08-18T21:55:09.345Z",
+    "synopsis": "An inquiry into the causes of the Greco-Persian wars.",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+  }
+},
+{
+  "model": "articles.userfavouritearticle",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "article": 3
+  }
+},
+{
+  "model": "articles.userfavouritearticle",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "article": 5
+  }
+}
+]

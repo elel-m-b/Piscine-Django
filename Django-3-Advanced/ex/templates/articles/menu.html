@@ -1,0 +1,67 @@
+{% load i18n django_bootstrap5 %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 mb-4">
+    <a class="navbar-brand" href="{% url 'articles:home' %}">Hellenica</a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'articles:home' %}">{% trans "Home" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'articles:articles' %}">{% trans "Last Articles" %}</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'articles:favourites' %}">{% trans "Favourites" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'articles:publications' %}">{% trans "Publications" %}</a>
+                </li>
+            {% endif %}
+        </ul>
+
+        <ul class="navbar-nav align-items-lg-center gap-lg-2">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <span class="navbar-text text-light">
+                        {% blocktrans with username=user.username %}Logged as {{ username }}{% endblocktrans %}
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <form method="post" action="{% url 'articles:logout' %}" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-light">{% trans "Logout" %}</button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'articles:register' %}">{% trans "Register" %}</a>
+                </li>
+                <li class="nav-item">
+                    <form method="post" action="{% url 'articles:login' %}" class="d-flex align-items-center gap-1">
+                        {% csrf_token %}
+                        {% bootstrap_form login_form show_label=False layout="inline" %}
+                        <button type="submit" class="btn btn-sm btn-light">{% trans "Login" %}</button>
+                    </form>
+                </li>
+            {% endif %}
+
+            <li class="nav-item ms-lg-3">
+                <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center gap-1">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path }}">
+                    <select name="language" class="form-select form-select-sm" onchange="this.form.submit()">
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        {% get_available_languages as AVAILABLE_LANGUAGES %}
+                        {% for lang_code, lang_name in AVAILABLE_LANGUAGES %}
+                            <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANGUAGE %}selected{% endif %}>
+                                {{ lang_name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>

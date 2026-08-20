@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n article_extras %}
+
+{% block title %}{% trans "Last Articles" %} - Hellenica{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Last Articles" %}</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "Title" %}</th>
+                <th>{% trans "Author" %}</th>
+                <th>{% trans "Created" %}</th>
+                <th>{% trans "Synopsis" %}</th>
+                <th>{% trans "Published for" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>
+                        <a href="{% url 'articles:article_detail' article.pk %}">{{ article.title }}</a>
+                    </td>
+                    <td>{{ article.author.username }}</td>
+                    <td>{{ article.created|date:"N j, Y, H:i" }}</td>
+                    <td>{{ article.synopsis|short_synopsis:20 }}</td>
+                    <td>{{ article.created|days_since }}</td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="5">{% trans "No articles yet." %}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

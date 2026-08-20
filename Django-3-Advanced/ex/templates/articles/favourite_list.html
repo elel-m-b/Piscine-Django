@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Favourites - Hellenica{% endblock %}
+
+{% block content %}
+    <h1>My Favourites</h1>
+
+    <ul class="list-group">
+        {% for favourite in favourites %}
+            <li class="list-group-item">
+                <a href="{% url 'articles:article_detail' favourite.article.pk %}">
+                    {{ favourite.article.title }}
+                </a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">You have no favourite articles yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
