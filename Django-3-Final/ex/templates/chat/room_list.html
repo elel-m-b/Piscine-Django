@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Chat Rooms - d09{% endblock %}
+
+{% block content %}
+    <h1>Chat Rooms</h1>
+
+    {% if not user.is_authenticated %}
+        <p class="text-muted">
+            <a href="{% url 'account:account' %}">Log in</a> to join a chatroom.
+        </p>
+    {% endif %}
+
+    <ul class="list-group" style="max-width: 400px;">
+        {% for room in rooms %}
+            <li class="list-group-item">
+                <a href="{% url 'chat:room_detail' room.name %}">{{ room.name }}</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No chatrooms yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

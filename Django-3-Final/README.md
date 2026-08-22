@@ -1,81 +1,106 @@
-# Django-3-Final
+#Django-3-Final
 
-This project is about learning **AJAX and WebSockets with Django**.
+Django project for the **Python-Django - 3 Final** subject.
 
-We will build one Django website step by step.
+The project contains 5 exercises:
 
-The final website will have:
+* AJAX login/logout
+* Basic WebSocket chat
+* Chat history
+* Online user list
+* Auto-scroll chat
 
-* Login / Logout with AJAX
-* 3 chat rooms
-* Real-time chat with WebSockets
-* Message history
-* Connected users list
-* Automatic chat scrolling
+## Project structure
 
-Do not build everything at once.
+```text
+ex/
+├── manage.py
+├── requirements.txt
+│
+├── d09/
+│   ├── settings.py
+│   ├── urls.py
+│   └── asgi.py
+│
+├── account/
+│   ├── views.py
+│   └── urls.py
+│
+├── chat/
+│   ├── models.py
+│   ├── views.py
+│   ├── consumers.py
+│   ├── routing.py
+│   ├── urls.py
+│   └── fixtures/
+│       └── rooms.json
+│
+├── templates/
+│   ├── base.html
+│   ├── account/
+│   │   └── account.html
+│   └── chat/
+│       ├── room_list.html
+│       └── room_detail.html
+│
+└── static/
+    └── js/
+        ├── csrf.js
+        ├── account.js
+        └── chat.js
+```
 
-Complete each step, test it, then continue.
+## Requirements
 
----
+* Python 3.10+
+* pip
+* Internet connection
 
-# 1. What We Need
+Main technologies:
 
-Install:
-
-* Python 3
 * Django
 * Django Channels
+* Daphne
+* SQLite
 * jQuery
-* Git
+* WebSockets
+* Bootstrap
 
-The project must run inside a virtual machine.
+The project uses `InMemoryChannelLayer`, which is enough for local development.
 
-Only **jQuery** is allowed as a JavaScript library.
-
-Keep Django's default admin application.
-
----
-
-# 2. Create the Project
-
-Start by creating a folder:
+## Installation
 
 ```bash
-mkdir Django-3-final
-```
+cd ex
 
-Create a virtual environment:
-
-```bash
 python3 -m venv venv
 source venv/bin/activate
+
+pip install -r requirements.txt
 ```
 
-Install Django and Channels:
+Create the database:
 
 ```bash
-pip install django channels
+python3 manage.py migrate
 ```
 
-Create the Django project:
+Load the chatrooms:
 
 ```bash
-django-admin startproject d09 .
+python3 manage.py loaddata chat/fixtures/rooms.json
 ```
 
-Create the applications:
+Create a user:
 
 ```bash
-python manage.py startapp account
-python manage.py startapp chat
+python3 manage.py createsuperuser
 ```
 
-Run the server:
+Run the project:
 
 ```bash
-python manage.py migrate
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 Open:
@@ -84,594 +109,117 @@ Open:
 http://127.0.0.1:8000/
 ```
 
-If Django works, continue.
-
----
-
-# 3. Exercise 00 - AJAX Login
-
-First, build authentication.
-
-Create the `account` application.
-
-Create:
+Admin:
 
 ```text
-/account/
+http://127.0.0.1:8000/admin/
 ```
 
-This page has two states.
+## Exercises
 
-### User is NOT logged in
+### Exercise 00 — AJAX Login / Logout
 
-Show:
+Login and logout are handled using AJAX.
+
+* No page reload after login.
+* No page reload after logout.
+* Django `AuthenticationForm` is used for authentication.
+* AJAX requests return JSON.
+* CSRF protection is handled in `csrf.js`.
+
+Test:
+
+1. Open `/account/`.
+2. Try an incorrect password.
+3. Login with valid credentials.
+4. Logout.
+5. Refresh the page and check that the session is preserved.
+
+### Exercise 01 — Basic Chat
+
+The project contains three chatrooms:
+
+* General
+* Movies
+* Gaming
+
+Chat uses WebSockets through Django Channels.
+
+Only authenticated users can enter a room.
+
+Test with two browser sessions:
 
 ```text
-Login
-Password
-[Login]
+Browser 1 → Alice
+Browser 2 → Bob
 ```
 
-The login must use:
+Join the same room and send messages between them.
+
+### Exercise 02 — Chat History
+
+When joining a room, the last **3 messages** are displayed.
+
+Messages are shown from oldest to newest.
+
+### Exercise 03 — User List
+
+Each room has a list of connected users.
+
+The list is updated when:
+
+* A user joins.
+* A user leaves.
+
+The online user list is kept in memory and is not stored in the database.
+
+### Exercise 04 — Auto Scroll
+
+The chat message area has a fixed height and becomes scrollable when there are many messages.
+
+New messages automatically scroll the chat to the bottom.
+
+## Testing
+
+A simple test:
+
+1. Start the server.
+2. Open `/account/`.
+3. Login as a user.
+4. Open a chatroom.
+5. Open another browser/private window.
+6. Login with another user.
+7. Join the same room.
+8. Send messages.
+9. Check the user list.
+10. Close one browser and check that the user disappears.
+11. Send enough messages to test scrolling.
+
+## Troubleshooting
+
+| Problem                       | Solution                                              |
+| ----------------------------- | ----------------------------------------------------- |
+| Django is not installed       | `pip install -r requirements.txt`                     |
+| Database table does not exist | `python3 manage.py migrate`                           |
+| No chatrooms                  | `python3 manage.py loaddata chat/fixtures/rooms.json` |
+| AJAX returns 403              | Check CSRF and cookies                                |
+| WebSocket does not connect    | Make sure you are logged in and the server is running |
+| User list does not update     | Refresh and reconnect the WebSocket                   |
+
+## Demo
+
+If the provided fixtures contain the demo users:
 
 ```text
-AJAX + POST
+Username: alice
+Password: d09testpass
+
+Username: bob
+Password: d09testpass
 ```
 
-There must be **no page refresh**.
+Use two different browser sessions to test the chat.
 
-If the login is wrong:
+## Author
 
-* Show the error on the page
-* Do not refresh the page
-
-If the login is correct:
-
-```text
-Logged as username
-[Logout]
-```
-
-must appear.
-
-### User IS logged in
-
-Show:
-
-```text
-Logged as username
-[Logout]
-```
-
-Logout must also use:
-
-```text
-AJAX + POST
-```
-
-Again, no page refresh.
-
-### What to learn
-
-* Django authentication
-* `AuthenticationForm`
-* Django sessions
-* AJAX
-* POST requests
-* JSON responses
-* jQuery
-
-### Test
-
-Before continuing, verify:
-
-```text
-[ ] Login works
-[ ] Wrong login shows an error
-[ ] Login does not refresh the page
-[ ] Logged username appears
-[ ] Logout works
-[ ] Logout does not refresh the page
-[ ] Refreshing the browser keeps the correct login state
-```
-
----
-
-# 4. Exercise 01 - Basic Chat
-
-Now create the chat application.
-
-We need **3 chat rooms**.
-
-The rooms must be stored in the database.
-
-For example:
-
-```text
-Room 1
-Room 2
-Room 3
-```
-
-The home page should show links to the rooms.
-
-Example:
-
-```text
-Chat Rooms
-
-[Room 1]
-[Room 2]
-[Room 3]
-```
-
-A user must be logged in before entering a room.
-
----
-
-## Create the Chat Models
-
-Create a `Room` model.
-
-Create a `Message` model.
-
-A message should contain at least:
-
-```text
-user
-room
-message
-timestamp
-```
-
-Run:
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
----
-
-# 5. Configure WebSockets
-
-Now we need to make Django understand WebSockets.
-
-Install/use:
-
-```text
-Django Channels
-```
-
-Configure:
-
-```text
-settings.py
-asgi.py
-routing.py
-consumers.py
-```
-
-The basic flow will be:
-
-```text
-Browser
-   |
-   | WebSocket
-   v
-Django Channels
-   |
-   v
-Consumer
-   |
-   v
-Chat Room
-```
-
-Do not worry about the complete chat yet.
-
-First make sure a WebSocket connection can be opened.
-
----
-
-# 6. Make the Chat Work
-
-Inside a room, create a simple chat interface.
-
-Example:
-
-```text
-Room 1
-
--------------------------
-Alice: Hello
-Bob: Hi
-Alice: How are you?
--------------------------
-
-[Write message................] [Send]
-```
-
-When a user sends a message:
-
-```text
-Browser
-   |
-   | WebSocket
-   v
-Consumer
-   |
-   v
-Database
-   |
-   v
-Other connected users
-```
-
-The message must appear for everyone in the same room.
-
-Do NOT use AJAX for the chat.
-
-Use:
-
-```text
-WebSockets + jQuery
-```
-
----
-
-# 7. Join Message
-
-When a user enters a room, send:
-
-```text
-<username> has joined the chat
-```
-
-Example:
-
-```text
-Alice has joined the chat
-```
-
-Everyone in the room must see it.
-
-The user who joined must also see it.
-
-Test with two browser windows.
-
-Example:
-
-```text
-Browser 1: Alice
-Browser 2: Bob
-```
-
-When Bob joins:
-
-```text
-Bob has joined the chat
-```
-
-must appear in both browsers.
-
----
-
-# 8. Exercise 02 - Message History
-
-Now add history.
-
-When a user enters a room, show the **last 3 messages**.
-
-Example database:
-
-```text
-Message 1
-Message 2
-Message 3
-Message 4
-Message 5
-```
-
-New user should see:
-
-```text
-Message 3
-Message 4
-Message 5
-```
-
-They must appear:
-
-```text
-oldest
-   ↓
-newest
-```
-
-Continue using:
-
-```text
-WebSockets + jQuery
-```
-
----
-
-# 9. Exercise 03 - Connected Users
-
-Now add a user list.
-
-The page should look something like:
-
-```text
----------------------------------------
-| Messages          | Users           |
-|                   |                 |
-| Alice: Hello      | Alice           |
-| Bob: Hi           | Bob             |
-|                   | Charlie         |
----------------------------------------
-```
-
-When a user joins:
-
-```text
-User joins
-    ↓
-Add user to list
-    ↓
-Update everyone
-```
-
-When a user leaves:
-
-```text
-User leaves
-    ↓
-Remove user from list
-    ↓
-Update everyone
-```
-
-Also display:
-
-```text
-<username> has left the chat
-```
-
-Example:
-
-```text
-Bob has left the chat
-```
-
----
-
-# 10. Exercise 04 - Scroll
-
-Now make the chat easier to use.
-
-The message area must have a fixed height.
-
-Example:
-
-```text
--------------------------
-Alice: Hello
-Bob: Hi
-Alice: How are you?
-Bob: Fine
-...
-...
--------------------------
-          ↓
-       scrollbar
-```
-
-When new messages arrive:
-
-```text
-scroll = bottom
-```
-
-The newest message should always be visible.
-
----
-
-# 11. Final Project Structure
-
-Your project should end up approximately like this:
-
-```text
-django-3-final/
-│
-├── venv/
-│
-├── manage.py
-├── requirements.txt
-│
-├── d09/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── ...
-│
-├── account/
-│   ├── views.py
-│   ├── forms.py
-│   ├── urls.py
-│   └── ...
-│
-├── chat/
-│   ├── models.py
-│   ├── views.py
-│   ├── consumers.py
-│   ├── routing.py
-│   └── ...
-│
-├── templates/
-│
-├── static/
-│
-└── README.md
-```
-
-The exact structure can change while you are building the project.
-
----
-
-# 12. What You Should Understand
-
-By the end of the project, you should understand:
-
-```text
-Django
-├── Project
-├── Apps
-├── URLs
-├── Views
-├── Templates
-├── Models
-├── ORM
-└── Authentication
-
-AJAX
-├── GET / POST
-├── jQuery
-└── JSON
-
-WebSockets
-├── Connection
-├── Consumer
-├── Routing
-├── Groups
-└── Real-time messages
-
-Django Channels
-└── WebSocket support
-```
-
----
-
-# 13. Testing
-
-Do not wait until the end to test.
-
-After every exercise, test it.
-
-## Exercise 00
-
-```text
-[ ] Login works
-[ ] Logout works
-[ ] Wrong credentials show an error
-[ ] No page refresh
-[ ] Refresh keeps the correct state
-```
-
-## Exercise 01
-
-```text
-[ ] 3 rooms exist
-[ ] Rooms are stored in database
-[ ] Only logged users can chat
-[ ] WebSocket connection works
-[ ] Messages are real-time
-[ ] Multiple users can chat
-[ ] Messages stay in order
-[ ] Join message works
-```
-
-## Exercise 02
-
-```text
-[ ] Last 3 messages are displayed
-[ ] Messages are in the correct order
-```
-
-## Exercise 03
-
-```text
-[ ] Connected users are displayed
-[ ] New users appear automatically
-[ ] Users disappear when they leave
-[ ] Join message works
-[ ] Leave message works
-```
-
-## Exercise 04
-
-```text
-[ ] Message container has fixed size
-[ ] Scrollbar appears
-[ ] Scroll stays at the bottom
-[ ] New messages are visible
-```
-
----
-
-# 14. Final Step
-
-When everything works:
-
-Create the requirements file:
-
-```bash
-pip freeze > requirements.txt
-```
-
-Check the project:
-
-```bash
-python manage.py check
-```
-
-Run migrations:
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-Run the server:
-
-```bash
-python manage.py runserver
-```
-
----
-
-# 15. The Important Rule
-
-Do not try to understand the whole project before starting.
-
-Fol
----
-
-# 15. The Important Rule
-
-Do not try to understand the whole project before starting.
-
-Follow this order:
-
-```text
-Exercise 00
-AJAX Login
-     ↓
-Exercise 01
-Basic WebSocket Chat
-     ↓
-Exercise 02
-Message History
-     ↓
-Exercise 03
-Connected Users
-     ↓
-Exercise 04
-Scroll
-     ↓
-Final Testing
-```
-
-**Build → Test → Understand → Continue.**
-
+Training project — Python/Django.

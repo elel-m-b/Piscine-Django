@@ -1,0 +1,23 @@
+[
+{
+  "model": "chat.chatroom",
+  "pk": 1,
+  "fields": {
+    "name": "General"
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 2,
+  "fields": {
+    "name": "Movies"
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 3,
+  "fields": {
+    "name": "Gaming"
+  }
+}
+]

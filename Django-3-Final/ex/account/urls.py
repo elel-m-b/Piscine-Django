@@ -1,0 +1,11 @@
+from django.urls import path
+
+from . import views
+
+app_name = 'account'
+
+urlpatterns = [
+    path('', views.account_page, name='account'),
+    path('login/', views.ajax_login, name='ajax_login'),
+    path('logout/', views.ajax_logout, name='ajax_logout'),
+]

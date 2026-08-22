@@ -1,0 +1,27 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}d09{% endblock %}</title>
+    {% bootstrap_css %}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark px-3 mb-4">
+        <a class="navbar-brand" href="{% url 'chat:room_list' %}">d09</a>
+        <div class="ms-auto">
+            <a class="btn btn-outline-light btn-sm" href="{% url 'chat:room_list' %}">Chat rooms</a>
+            <a class="btn btn-outline-light btn-sm" href="{% url 'account:account' %}">Account</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% bootstrap_messages %}
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 static %}
+
+{% block title %}My Account - d09{% endblock %}
+
+{% block content %}
+    <h1>My Account</h1>
+
+    {# ---- Shown to an anonymous visitor. Server decides the initial state. ---- #}
+    <div id="anon-view" style="display: {% if user.is_authenticated %}none{% else %}block{% endif %};">
+        <div id="login-errors"></div>
+        <form id="login-form">
+            {% csrf_token %}
+            {% bootstrap_form login_form %}
+            {% bootstrap_button "Login" button_type="submit" button_class="btn btn-primary" %}
+        </form>
+    </div>
+
+    {# ---- Shown to a logged-in visitor. ---- #}
+    <div id="auth-view" style="display: {% if user.is_authenticated %}block{% else %}none{% endif %};">
+        <p class="fs-5">Logged as <strong id="auth-username">{{ user.username }}</strong></p>
+        <button id="logout-btn" class="btn btn-outline-danger">Logout</button>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/csrf.js' %}"></script>
+<script src="{% static 'js/account.js' %}"></script>
+{% endblock %}
